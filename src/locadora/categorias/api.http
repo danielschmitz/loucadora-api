@@ -1,9 +1,9 @@
 
+@host = {{$dotenv DEV_HOST}}
 
-@host = http://localhost:3000
 
 ### Get Categorias
-GET {{host}}/categorias HTTP/1.1
+GET {{host}}/categorias/ HTTP/1.1
 
 
 ### Get Categoria id = 1
@@ -17,7 +17,7 @@ PUT {{host}}/categorias/1 HTTP/1.1
 content-type: application/json
 
 {
-    "nome": "Suspense 3"
+    "nome": "Category Name"
 }
 
 ### Nova Categoria
@@ -28,17 +28,5 @@ content-type: application/json
     "nome": "Ação"
 }
 
-
-### Get Filme id = 1
-GET {{host}}/filmes/1 HTTP/1.1
-
-### Get Filme id = 99999 (not found test)
-GET {{host}}/filmes/9999 HTTP/1.1
-
-### Nova Filme
-POST {{host}}/filmes HTTP/1.1
-content-type: application/json
-
-{
-    "nome": "Ação"
-}
+### Deletar Categoria
+DELETE {{host}}/categorias/2 HTTP/1.1

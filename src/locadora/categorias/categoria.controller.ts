@@ -1,8 +1,8 @@
-import { Body, Controller, Get, NotFoundException, Param, ParseIntPipe, Post, Put, Req } from '@nestjs/common';
+import { Body, Controller, Delete, Get, NotFoundException, Param, ParseIntPipe, Post, Put, Req } from '@nestjs/common';
 import { Request } from 'express';
-import { CategoriaDto } from '../dto/categoria';
-import { Categoria } from '../entities/categoria.entity';
-import { CategoriaService } from '../services/categoria';
+import { CategoriaDto } from './categoria.dto';
+import { Categoria } from './categoria.entity';
+import { CategoriaService } from './categoria.service';
 
 @Controller('categorias')
 export class CategoriaController {
@@ -33,4 +33,13 @@ export class CategoriaController {
         return this._categoriaService.edit(id, categoriaDto);
     } 
 
+    @Delete(":id")
+    async delete(@Param('id', ParseIntPipe) id: number): Promise<string> {
+        const categoria: Categoria = await this._categoriaService.findById(id)
+        if (categoria == undefined) {
+            throw new NotFoundException()
+        }
+        await this._categoriaService.delete(id)
+        return "ok"
+    }
 }

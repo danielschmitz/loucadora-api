@@ -1,8 +1,8 @@
 import { BadRequestException, Get, Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Not, Repository } from 'typeorm';
-import { CategoriaDto } from '../dto/categoria';
-import { Categoria } from '../entities/categoria.entity';
+import { CategoriaDto } from './categoria.dto';
+import { Categoria } from './categoria.entity';
 
 @Injectable()
 export class CategoriaService {
@@ -43,6 +43,10 @@ export class CategoriaService {
 
         return this._categoriaRepository.save(categoria);
 
+    }
+
+    delete(id: number): void {
+        this._categoriaRepository.delete(id)
     }
 
 }

@@ -1,11 +1,11 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { CategoriaController } from './controllers/categoria';
-import { FilmeController } from './controllers/filme';
-import { Categoria } from './entities/categoria.entity';
-import { Filme } from './entities/filme.entity';
-import { CategoriaService } from './services/categoria';
-import { FilmeService } from './services/filme';
+import { CategoriaController } from './categorias/categoria.controller';
+import { FilmeController } from './filmes/filme.controller';
+import { Categoria } from './categorias/categoria.entity';
+import { Filme } from './filmes/filme.entity';
+import { CategoriaService } from './categorias/categoria.service';
+import { FilmeService } from './filmes/filme.service';
 
 @Module({
     imports: [TypeOrmModule.forFeature([Categoria, Filme])],

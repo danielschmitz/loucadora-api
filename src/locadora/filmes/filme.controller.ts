@@ -1,8 +1,8 @@
 import { Body, Controller, Get, HttpException, HttpStatus, NotFoundException, Param, ParseIntPipe, Post, Req } from '@nestjs/common';
 import { Request } from 'express';
-import { FilmeDto } from '../dto/filme';
-import { Filme } from '../entities/filme.entity';
-import { FilmeService } from '../services/filme';
+import { FilmeDto } from './filme.dto';
+import { Filme } from './filme.entity';
+import { FilmeService } from './filme.service';
 
 @Controller('filmes')
 export class FilmeController {
