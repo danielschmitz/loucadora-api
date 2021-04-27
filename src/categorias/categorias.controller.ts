@@ -1,4 +1,4 @@
-import { Controller, Get, HttpException, HttpStatus, Param, ParseIntPipe, Req } from '@nestjs/common';
+import { Controller, Get, HttpException, HttpStatus, NotFoundException, Param, ParseIntPipe, Req } from '@nestjs/common';
 import { Request } from 'express';
 import { CategoriaDto } from './categorias.dto';
 import { Categoria } from './categorias.entity';
@@ -15,8 +15,12 @@ export class CategoriasController {
     }
     
     @Get(":id")
-    findOne(@Param('id', ParseIntPipe) id: number): Promise<Categoria> {
-        return this._categoriaService.findById(id)
+    async findOne(@Param('id', ParseIntPipe) id: number): Promise<Categoria> {
+        const categoria: Categoria = await this._categoriaService.findById(id)
+        if (categoria == undefined) {
+            throw new NotFoundException()
+        }
+        return categoria
     }
 
 

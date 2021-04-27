@@ -18,6 +18,6 @@ export class CategoriasService {
     async findById(id: number): Promise<CategoriaDto> {
         return await this._categoriaRepository.findOne(id);
     }
-    
+
 
 }

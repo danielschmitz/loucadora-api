@@ -1,0 +1,13 @@
+
+
+@host = http://localhost:3000
+
+### Get Categorias
+GET {{host}}/categorias HTTP/1.1
+
+
+### Get Categoria id = 1
+GET {{host}}/categorias/1 HTTP/1.1
+
+### Get Categoria id = 99999 (not found test)
+GET {{host}}/categorias/9999 HTTP/1.1
