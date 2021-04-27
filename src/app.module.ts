@@ -1,13 +1,13 @@
-import { LocadoraModule } from './locadora/locadora.module';
+import { FilmeModule } from './filmes/filme.module';
+import { CategoriaModule } from './categorias/categoria.module';
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { TypeOrmModule } from '@nestjs/typeorm';
+import { TypeOrmModule, TypeOrmModuleOptions } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
 
 @Module({
   imports: [
-    LocadoraModule,
     ConfigModule.forRoot(),
     TypeOrmModule.forRoot({
       type: "postgres",
@@ -19,6 +19,8 @@ import { ConfigModule } from '@nestjs/config';
       entities: ["dist/**/*.entity{.ts,.js}"],
       synchronize: process.env.NODE_ENV == "development"
     }),
+    FilmeModule,
+    CategoriaModule,
   ],
   controllers: [AppController],
   providers: [AppService],

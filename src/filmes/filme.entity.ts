@@ -1,4 +1,4 @@
-import { Categoria } from 'src/locadora/categorias/categoria.entity';
+import { Categoria } from 'src/categorias/categoria.entity';
 import { Entity, Column, PrimaryGeneratedColumn, ManyToOne } from 'typeorm';
 
 @Entity("Filmes")
