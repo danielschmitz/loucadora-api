@@ -1,4 +1,4 @@
-import { Controller, Get, HttpException, HttpStatus, NotFoundException, Param, ParseIntPipe, Req } from '@nestjs/common';
+import { Body, Controller, Get, HttpException, HttpStatus, NotFoundException, Param, ParseIntPipe, Post, Req } from '@nestjs/common';
 import { Request } from 'express';
 import { CategoriaDto } from './categorias.dto';
 import { Categoria } from './categorias.entity';
@@ -23,5 +23,9 @@ export class CategoriasController {
         return categoria
     }
 
+    @Post()
+    create(@Body() categoriaDto : CategoriaDto): Promise<CategoriaDto>{
+        return this._categoriaService.create(categoriaDto);
+    } 
 
 }

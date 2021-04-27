@@ -19,7 +19,7 @@ $ nest new project-name
 
 💻 `nest g controller nomeDoController`
 
-```
+```ts
 import { Controller, Get, Query, Post, Body, Put, Param, Delete } from '@nestjs/common';
 import { CreateCatDto, UpdateCatDto, ListAllEntities } from './dto';
 
