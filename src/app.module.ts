@@ -1,11 +1,15 @@
-import { CategoriasService } from './categorias/categorias.service';
+import { CategoriaService } from './categorias/categoria.service';
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { CategoriasController } from './categorias/categorias.controller';
+import { CategoriaController } from './categorias/categoria.controller';
+
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { Categoria } from './categorias/categorias.entity';
+import { Categoria } from './categorias/categoria.entity';
 import { ConfigModule } from '@nestjs/config';
+import { FilmeService } from './filmes/filme.service';
+import { FilmeController } from './filmes/filme.controller';
+import { Filme } from './filmes/filme.entity';
 
 @Module({
   imports: [
@@ -20,10 +24,10 @@ import { ConfigModule } from '@nestjs/config';
       entities: ["dist/**/*.entity{.ts,.js}"],
       synchronize: process.env.NODE_ENV == "development"
     }),
-    TypeOrmModule.forFeature([Categoria]),
+    TypeOrmModule.forFeature([Categoria, Filme]),
   ],
-  controllers: [AppController, CategoriasController],
+  controllers: [AppController, CategoriaController, FilmeController],
   providers: [
-    CategoriasService, AppService],
+    CategoriaService, FilmeService, AppService],
 })
 export class AppModule { }

@@ -1,11 +1,11 @@
 import { BadRequestException, Get, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { CategoriaDto } from './categorias.dto';
-import { Categoria } from './categorias.entity';
+import { CategoriaDto } from './categoria.dto';
+import { Categoria } from './categoria.entity';
 
 @Injectable()
-export class CategoriasService {
+export class CategoriaService {
 
     constructor(@InjectRepository(Categoria) private _categoriaRepository: Repository<Categoria>) { }
 

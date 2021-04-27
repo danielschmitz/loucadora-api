@@ -1,13 +1,13 @@
 import { Body, Controller, Get, HttpException, HttpStatus, NotFoundException, Param, ParseIntPipe, Post, Req } from '@nestjs/common';
 import { Request } from 'express';
-import { CategoriaDto } from './categorias.dto';
-import { Categoria } from './categorias.entity';
-import { CategoriasService } from './categorias.service';
+import { CategoriaDto } from './categoria.dto';
+import { Categoria } from './categoria.entity';
+import { CategoriaService } from './categoria.service';
 
 @Controller('categorias')
-export class CategoriasController {
+export class CategoriaController {
 
-    constructor(private _categoriaService: CategoriasService) {}
+    constructor(private _categoriaService: CategoriaService) {}
 
     @Get()
     findAll(@Req() _: Request): Promise<CategoriaDto[]> {

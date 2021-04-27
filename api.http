@@ -19,3 +19,18 @@ content-type: application/json
 {
     "nome": "Ação"
 }
+
+
+### Get Filme id = 1
+GET {{host}}/filmes/1 HTTP/1.1
+
+### Get Filme id = 99999 (not found test)
+GET {{host}}/filmes/9999 HTTP/1.1
+
+### Nova Filme
+POST {{host}}/filmes HTTP/1.1
+content-type: application/json
+
+{
+    "nome": "Ação"
+}
