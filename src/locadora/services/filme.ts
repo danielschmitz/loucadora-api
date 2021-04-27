@@ -1,7 +1,7 @@
 import { BadRequestException, Get, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { FilmeDto } from '../entities/dto/filme';
+import { FilmeDto } from '../dto/filme';
 import { Filme } from '../entities/filme.entity';
 
 @Injectable()

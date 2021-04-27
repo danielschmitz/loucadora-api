@@ -1,6 +1,6 @@
-import { Body, Controller, Get, HttpException, HttpStatus, NotFoundException, Param, ParseIntPipe, Post, Req } from '@nestjs/common';
+import { Body, Controller, Get, NotFoundException, Param, ParseIntPipe, Post, Put, Req } from '@nestjs/common';
 import { Request } from 'express';
-import { CategoriaDto } from '../entities/dto/categoria';
+import { CategoriaDto } from '../dto/categoria';
 import { Categoria } from '../entities/categoria.entity';
 import { CategoriaService } from '../services/categoria';
 
@@ -26,6 +26,11 @@ export class CategoriaController {
     @Post()
     create(@Body() categoriaDto : CategoriaDto): Promise<CategoriaDto>{
         return this._categoriaService.create(categoriaDto);
+    } 
+
+    @Put(":id")
+    edit(@Param('id', ParseIntPipe) id: number, @Body() categoriaDto : CategoriaDto): Promise<CategoriaDto>{
+        return this._categoriaService.edit(id, categoriaDto);
     } 
 
 }

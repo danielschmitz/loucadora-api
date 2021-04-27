@@ -12,6 +12,14 @@ GET {{host}}/categorias/1 HTTP/1.1
 ### Get Categoria id = 99999 (not found test)
 GET {{host}}/categorias/9999 HTTP/1.1
 
+### Editar Categoria
+PUT {{host}}/categorias/1 HTTP/1.1
+content-type: application/json
+
+{
+    "nome": "Suspense 3"
+}
+
 ### Nova Categoria
 POST {{host}}/categorias HTTP/1.1
 content-type: application/json
