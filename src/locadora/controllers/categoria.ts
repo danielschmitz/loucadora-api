@@ -1,8 +1,8 @@
 import { Body, Controller, Get, HttpException, HttpStatus, NotFoundException, Param, ParseIntPipe, Post, Req } from '@nestjs/common';
 import { Request } from 'express';
-import { CategoriaDto } from './categoria.dto';
-import { Categoria } from './categoria.entity';
-import { CategoriaService } from './categoria.service';
+import { CategoriaDto } from '../entities/dto/categoria';
+import { Categoria } from '../entities/categoria.entity';
+import { CategoriaService } from '../services/categoria';
 
 @Controller('categorias')
 export class CategoriaController {

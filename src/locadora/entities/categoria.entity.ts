@@ -1,4 +1,4 @@
-import { Filme } from 'src/filmes/filme.entity';
+import { Filme } from 'src/locadora/entities/filme.entity';
 import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
 
 @Entity("Categorias")

@@ -1,4 +1,4 @@
-import { Categoria } from "src/categorias/categoria.entity";
+import { Categoria } from "src/locadora/entities/categoria.entity";
 
 export class FilmeDto {
     id: number;

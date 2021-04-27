@@ -1,8 +1,8 @@
 import { BadRequestException, Get, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { FilmeDto } from './filme.dto';
-import { Filme } from './filme.entity';
+import { FilmeDto } from '../entities/dto/filme';
+import { Filme } from '../entities/filme.entity';
 
 @Injectable()
 export class FilmeService {
