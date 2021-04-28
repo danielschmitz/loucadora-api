@@ -12,11 +12,12 @@ GET {{host}}/filmes/1 HTTP/1.1
 GET {{host}}/filmes/9999 HTTP/1.1
 
 ### Editar Filme
-PUT {{host}}/filmes/1 HTTP/1.1
+PUT {{host}}/filmes/2 HTTP/1.1
 content-type: application/json
 
 {
-    "nome": "Category Name"
+    "nome": "Filme 1.1.1"
+    
 }
 
 ### Novo Filme
@@ -24,11 +25,7 @@ POST {{host}}/filmes HTTP/1.1
 content-type: application/json
 
 {
-    "nome": "Filme 1",
-    "categoria": {
-        "id": "3"
-    }
-
+    "nome": "Filme 3"
 }
 
 ### Deletar Filme

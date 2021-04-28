@@ -29,8 +29,6 @@ export class FilmeService {
             throw new BadRequestException("O filme já existe")
         }
 
-        filmeDto.categoria = await this._categoriaRepository.findOne({ id: filmeDto.categoria.id })
-
         return this._filmeRepository.save(filmeDto);
     }
 
@@ -46,7 +44,10 @@ export class FilmeService {
             throw new NotFoundException("Filme inexistente")
         }
 
-        filme.nome = filmeDto.nome;
+        filme.nome = filmeDto.nome
+        
+        if (filmeDto.categoria != undefined)
+            filme.categoria = await this._categoriaRepository.findOne(filmeDto.categoria.id)
 
         return this._filmeRepository.save(filme);
 

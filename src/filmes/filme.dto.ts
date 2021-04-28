@@ -1,7 +1,7 @@
-import { Categoria } from "src/categorias/categoria.entity";
+import { CategoriaDto } from "src/categorias/categoria.dto";
 
 export class FilmeDto {
     id: number;
     nome: string;
-    categoria: Categoria;
+    categoria: CategoriaDto;
   }
