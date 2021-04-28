@@ -9,6 +9,9 @@ export class Filme {
   @Column()
   nome: string;
 
+  @Column()
+  lancamento: Date;
+
   @ManyToOne(()=>Categoria, categoria => categoria.filmes)
   categoria: Categoria;
 }

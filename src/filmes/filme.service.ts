@@ -44,12 +44,7 @@ export class FilmeService {
             throw new NotFoundException("Filme inexistente")
         }
 
-        filme.nome = filmeDto.nome
-        
-        if (filmeDto.categoria != undefined)
-            filme.categoria = await this._categoriaRepository.findOne(filmeDto.categoria.id)
-
-        return this._filmeRepository.save(filme);
+        return this._filmeRepository.save(filmeDto);
 
     }
 

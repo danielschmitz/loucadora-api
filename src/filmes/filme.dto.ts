@@ -4,4 +4,5 @@ export class FilmeDto {
     id: number;
     nome: string;
     categoria: CategoriaDto;
+    lancamento: Date;
   }

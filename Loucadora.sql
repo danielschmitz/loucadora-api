@@ -5,8 +5,6 @@ CREATE TABLE "Categorias" (
   "nome" varchar
 );
 
--- INSERT INTO "public"."Categorias" (nome) VALUES ('Suspense')
-
 CREATE TABLE "Filmes" (
   "id" SERIAL PRIMARY KEY,
   "nome" varchar,
