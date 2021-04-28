@@ -10,12 +10,16 @@ export class CategoriaService {
     constructor(@InjectRepository(Categoria) private _categoriaRepository: Repository<Categoria>) { }
 
 
-    findAll(): Promise<CategoriaDto[]> {
-        return this._categoriaRepository.find({order:{id:'ASC'}});
+    async findAll(): Promise<CategoriaDto[]> {
+        return await this._categoriaRepository.find({order:{id:'ASC'}});
     }
 
     async findById(id: number): Promise<CategoriaDto> {
         return await this._categoriaRepository.findOne(id);
+    }
+
+    async findByIdWithFilmes(id: number): Promise<CategoriaDto> {
+        return await this._categoriaRepository.findOne(id, {relations:["filmes"]});
     }
 
     async create(categoriaDto: CategoriaDto): Promise<CategoriaDto> {
@@ -45,8 +49,8 @@ export class CategoriaService {
 
     }
 
-    delete(id: number): void {
-        this._categoriaRepository.delete(id)
+    async delete(id: number): Promise<void> {
+        await this._categoriaRepository.delete(id)
     }
 
 }

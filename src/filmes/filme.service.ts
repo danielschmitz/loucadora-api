@@ -1,32 +1,61 @@
-import { BadRequestException, Get, Injectable } from '@nestjs/common';
+import { BadRequestException, Get, Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { Categoria } from 'src/categorias/categoria.entity';
+import { Not, Repository } from 'typeorm';
 import { FilmeDto } from './filme.dto';
 import { Filme } from './filme.entity';
 
 @Injectable()
 export class FilmeService {
 
-    constructor(@InjectRepository(Filme) private _filmeRepository: Repository<Filme>) { }
+    constructor(
+        @InjectRepository(Filme) private _filmeRepository: Repository<Filme>,
+        @InjectRepository(Categoria) private _categoriaRepository: Repository<Categoria>
+    ) { }
 
 
     findAll(): Promise<FilmeDto[]> {
-        return this._filmeRepository.find();
+        return this._filmeRepository.find({ relations: ['categoria'] });
     }
 
     async findById(id: number): Promise<FilmeDto> {
         return await this._filmeRepository.findOne(id);
     }
 
-    async create(FilmeDto: FilmeDto): Promise<FilmeDto> {
+    async create(filmeDto: FilmeDto): Promise<FilmeDto> {
 
-        const filme = await this._filmeRepository.findOne({nome: FilmeDto.nome})
+        const filme = await this._filmeRepository.findOne({ nome: filmeDto.nome })
         if (filme) {
             throw new BadRequestException("O filme já existe")
         }
 
-        return this._filmeRepository.save(FilmeDto);
+        filmeDto.categoria = await this._categoriaRepository.findOne({ id: filmeDto.categoria.id })
+
+        return this._filmeRepository.save(filmeDto);
     }
+
+
+    async edit(id: number, filmeDto: FilmeDto): Promise<FilmeDto> {
+        const filmeExistente = await this._filmeRepository.findOne({ nome: filmeDto.nome, id: Not(id) })
+        if (filmeExistente != undefined) {
+            throw new BadRequestException("Não pode alterar o nome dessa filme para uma filme já existente")
+        }
+
+        const filme = await this._filmeRepository.findOne(id);
+        if (filme == undefined) {
+            throw new NotFoundException("Filme inexistente")
+        }
+
+        filme.nome = filmeDto.nome;
+
+        return this._filmeRepository.save(filme);
+
+    }
+
+    async delete(id: number): Promise<void> {
+        await this._filmeRepository.delete(id)
+    }
+
 
 
 }

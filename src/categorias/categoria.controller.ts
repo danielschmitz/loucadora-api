@@ -23,6 +23,15 @@ export class CategoriaController {
         return categoria
     }
 
+    @Get("comfilmes/:id")
+    async findOneWithFilmes(@Param('id', ParseIntPipe) id: number): Promise<Categoria> {
+        const categoria: Categoria = await this._categoriaService.findByIdWithFilmes(id)
+        if (categoria == undefined) {
+            throw new NotFoundException()
+        }
+        return categoria
+    }
+
     @Post()
     create(@Body() categoriaDto : CategoriaDto): Promise<CategoriaDto>{
         return this._categoriaService.create(categoriaDto);

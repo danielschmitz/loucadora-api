@@ -24,7 +24,11 @@ POST {{host}}/filmes HTTP/1.1
 content-type: application/json
 
 {
-    "nome": "Ação"
+    "nome": "Filme 1",
+    "categoria": {
+        "id": "3"
+    }
+
 }
 
 ### Deletar Filme
