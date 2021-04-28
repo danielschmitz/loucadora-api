@@ -1,0 +1,39 @@
+
+@host = {{$dotenv DEV_HOST}}
+
+
+### Get Clientes
+GET {{host}}/clientes/ HTTP/1.1
+
+### Get Cliente id = 1
+GET {{host}}/clientes/1 HTTP/1.1
+
+### Get Cliente id = 3
+GET {{host}}/clientes/comfilmes/3 HTTP/1.1
+
+### Get Cliente id = 99999 (not found test)
+GET {{host}}/clientes/9999 HTTP/1.1
+
+### Editar Cliente
+PUT {{host}}/clientes/1 HTTP/1.1
+content-type: application/json
+
+{
+    "nome": "Cliente 1.1",
+    "email" "cliente1@gmail.com",
+    "telefone" : "111222"
+}
+
+### Nova Cliente
+POST {{host}}/clientes HTTP/1.1
+content-type: application/json
+
+{
+   "nome": "Cliente 1.1",
+    "email" "cliente1@gmail.com",
+    "telefone" : "111222"
+}
+}
+
+### Deletar Cliente
+DELETE {{host}}/clientes/2 HTTP/1.1
