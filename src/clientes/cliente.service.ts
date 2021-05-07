@@ -16,7 +16,8 @@ export class ClienteService {
   async create(clienteDto: ClienteDto) : Promise<Cliente> {
 
     const clienteExiste = await this._clienteRepository.find({email: clienteDto.email})
-    if (clienteExiste != undefined) {
+    console.log(clienteExiste)
+    if (clienteExiste.length > 0) {
       throw new BadRequestException(`Cliente com email '${clienteDto.email}' existente`)
     }
 

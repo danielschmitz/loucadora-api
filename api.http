@@ -18,11 +18,11 @@ GET {{host}}/categorias/comfilmes/3 HTTP/1.1
 GET {{host}}/categorias/9999 HTTP/1.1
 
 ### Editar Categoria
-PUT {{host}}/categorias/1 HTTP/1.1
+PUT {{host}}/categorias/6 HTTP/1.1
 content-type: application/json
 
 {
-    "nome": "Category Name"
+    "nome": "Categoria 6"
 }
 
 ### Nova Categoria
@@ -30,7 +30,7 @@ POST {{host}}/categorias HTTP/1.1
 content-type: application/json
 
 {
-    "nome": "Ação"
+    "nome": "Categoria 5"
 }
 
 ### Deletar Categoria
@@ -54,12 +54,12 @@ GET {{host}}/clientes/comfilmes/3 HTTP/1.1
 GET {{host}}/clientes/9999 HTTP/1.1
 
 ### Editar Cliente
-PUT {{host}}/clientes/1 HTTP/1.1
+PUT {{host}}/clientes/2 HTTP/1.1
 content-type: application/json
 
 {
     "nome": "Cliente 1.1",
-    "email": "cliente1@gmail.com",
+    "email": "cliente1",
     "telefone" : "111222"
 }
 
@@ -68,8 +68,8 @@ POST {{host}}/clientes HTTP/1.1
 content-type: application/json
 
 {
-"nome": "Cliente 1.1",
-    "email": "cliente1@gmail.com",
+    "nome": "Cliente 1.1",
+    "email": "cliente122@gmail.com",
     "telefone" : "111222"
 }
 
