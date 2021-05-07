@@ -54,12 +54,12 @@ GET {{host}}/clientes/comfilmes/3 HTTP/1.1
 GET {{host}}/clientes/9999 HTTP/1.1
 
 ### Editar Cliente
-PUT {{host}}/clientes/2 HTTP/1.1
+PUT {{host}}/clientes/1222 HTTP/1.1
 content-type: application/json
 
 {
     "nome": "Cliente 1.1",
-    "email": "cliente1",
+    "email": "cliente1111@aa.com",
     "telefone" : "111222"
 }
 
@@ -69,7 +69,7 @@ content-type: application/json
 
 {
     "nome": "Cliente 1.1",
-    "email": "cliente122@gmail.com",
+    "email": "cliente12asas4442@gmail.com",
     "telefone" : "111222"
 }
 

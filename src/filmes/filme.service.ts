@@ -35,12 +35,12 @@ export class FilmeService {
 
     async edit(id: number, filmeDto: FilmeDto): Promise<FilmeDto> {
         const filmeExistente = await this._filmeRepository.findOne({ nome: filmeDto.nome, id: Not(id) })
-        if (filmeExistente != undefined) {
+        if (filmeExistente) {
             throw new BadRequestException("Não pode alterar o nome dessa filme para uma filme já existente")
         }
 
         const filme = await this._filmeRepository.findOne(id);
-        if (filme == undefined) {
+        if (!filme) {
             throw new NotFoundException("Filme inexistente")
         }
 

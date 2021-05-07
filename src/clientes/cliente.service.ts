@@ -9,51 +9,48 @@ export class ClienteService {
 
   constructor(
     @InjectRepository(Cliente) private _clienteRepository: Repository<Cliente>
-  ) {
+  ) { }
 
-  }
+  async create(clienteDto: ClienteDto): Promise<Cliente> {
 
-  async create(clienteDto: ClienteDto) : Promise<Cliente> {
-
-    const clienteExiste = await this._clienteRepository.find({email: clienteDto.email})
-    console.log(clienteExiste)
-    if (clienteExiste.length > 0) {
+    const clienteExiste = await this._clienteRepository.findOne({ email: clienteDto.email })
+    if (clienteExiste) {
       throw new BadRequestException(`Cliente com email '${clienteDto.email}' existente`)
     }
 
     return await this._clienteRepository.save(clienteDto)
   }
 
-  findAll() : Promise<Cliente[]> {
+  findAll(): Promise<Cliente[]> {
     return this._clienteRepository.find()
   }
 
-  findOne(id: number) : Promise<Cliente> {
+  findOne(id: number): Promise<Cliente> {
     return this._clienteRepository.findOne(id)
   }
 
   async update(id: number, clienteDto: ClienteDto): Promise<Cliente> {
-    
-    const clienteExiste = await this._clienteRepository.find({email: clienteDto.email, id: Not(id)})
-    if (clienteExiste != undefined) {
+
+    const clienteExiste = await this._clienteRepository.findOne({ email: clienteDto.email, id: Not(id) })
+    if (clienteExiste) {
       throw new BadRequestException(`Cliente com email '${clienteDto.email}' existente`)
     }
 
     const cliente = await this._clienteRepository.findOne(id)
-    if (cliente == undefined) {
+    if (!cliente) {
       throw new NotFoundException();
     }
 
     return await this._clienteRepository.save(clienteDto)
-    
+
   }
 
   async remove(id: number) {
 
     const cliente = await this._clienteRepository.findOne(id)
-    if (cliente == undefined) {
+    if (!cliente) {
       throw new NotFoundException();
     }
-    this._clienteRepository.delete(cliente)  
+    this._clienteRepository.delete(cliente)
   }
 }

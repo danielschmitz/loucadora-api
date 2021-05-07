@@ -24,8 +24,8 @@ export class CategoriaService {
 
     async create(categoriaDto: CategoriaDto): Promise<CategoriaDto> {
 
-        const categoria = await this._categoriaRepository.findOne({nome: categoriaDto.nome})
-        if (categoria != undefined) {
+        const categoriaExistente = await this._categoriaRepository.findOne({nome: categoriaDto.nome})
+        if (categoriaExistente) {
             throw new BadRequestException("A categoria já existe")
         }
 
@@ -34,12 +34,12 @@ export class CategoriaService {
 
     async edit(id: number, categoriaDto: CategoriaDto) : Promise<CategoriaDto>{
         const categoriaExistente = await this._categoriaRepository.findOne({nome: categoriaDto.nome, id: Not(id)})
-        if (categoriaExistente != undefined) {
+        if (categoriaExistente) {
             throw new BadRequestException("Não pode alterar o nome dessa categoria para uma categoria já existente")
         }
 
         const categoria = await this._categoriaRepository.findOne(id);
-        if (categoria == undefined) {
+        if (!categoria) {
             throw new NotFoundException("Categoria inexistente")
         }
 
