@@ -5,7 +5,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule, TypeOrmModuleOptions } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
-import { ClientesModule } from './clientes/clientes.module';
+import { ClienteModule } from './clientes/cliente.module';
 
 @Module({
   imports: [
@@ -22,7 +22,7 @@ import { ClientesModule } from './clientes/clientes.module';
     }),
     FilmeModule,
     CategoriaModule,
-    ClientesModule,
+    ClienteModule,
   ],
   controllers: [AppController],
   providers: [AppService],
