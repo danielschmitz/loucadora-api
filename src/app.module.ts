@@ -6,6 +6,7 @@ import { AppService } from './app.service';
 import { TypeOrmModule, TypeOrmModuleOptions } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
 import { ClienteModule } from './clientes/cliente.module';
+import { EmprestimoModule } from './emprestimos/emprestimo.module';
 
 @Module({
   imports: [
@@ -23,6 +24,7 @@ import { ClienteModule } from './clientes/cliente.module';
     FilmeModule,
     CategoriaModule,
     ClienteModule,
+    EmprestimoModule
   ],
   controllers: [AppController],
   providers: [AppService],
